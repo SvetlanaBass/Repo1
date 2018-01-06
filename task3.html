@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 3</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="contacts-form-wrapper">
+    <form name="contacts" method="post" action="somefile.php">
+        <p><input type="text" name="username" size="50" placeholder="Введите ваше имя" autofocus></p>
+        <p><input type="text" name="userphone" size="50" placeholder="Введите номер телефона" autofocus></p>
+        <p><input type="email" name="usermail" size="50" placeholder="Введите ваш электронный адрес"></p>
+        <p>
+            <label for="comment">Суть вашего письма</label>
+            <textarea id="comment" name="comment" cols="50" rows="5"></textarea>
+        </p>
+        <input type="submit" value="Отправить">
+        <input type="reset" value="Очистить">
+    </form>
+</div>
+
+</body>
+</html>
