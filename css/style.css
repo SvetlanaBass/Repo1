@@ -39,3 +39,9 @@ input[type="submit"]:hover,
 input[type="reset"]:hover {
     background-color: #394e59;
 }
+.errorMessage{
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding-top: 0;
+}
