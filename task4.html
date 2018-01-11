@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Палиндром</title>
+</head>
+<body>
+    <script>
+
+        // Вариант 1
+        function isPalindrome(s,r) {
+            r = s.toLowerCase().replace(/,|\s/g,"");
+            return r === r.split("").reverse().join("");
+        }
+
+/*
+        // Вариант 2
+        function isPalindrome(s) {
+            return s.replace(/,|\s/g,"").match(/^(.)(.)(.)(.)(.)(.)(.).?\7\6\5\4\3\2\1$/i);
+        }
+*/
+/*
+        // Вариант 3
+        function isPalindrome(s) {
+            if (s.replace(/,|\s/g, "").match(/^(.)(.)(.)(.)(.)(.)(.).?\7\6\5\4\3\2\1$/i)){
+                return true;
+            }
+            return false;
+        }
+*/
+/*
+        // Вариант 4
+        function isPalindrome(s) {
+            s = s.toLowerCase().replace(/,|\s/g, "");
+            var b = s.length;
+            for (var i = 0; i <= b/2; i++){
+                if (s[i] !== s[b-(i+1)]){
+                    return false;
+                }
+            }
+            return true;
+        }
+*/
+        console.log(isPalindrome("A car, a man, a maraca"));
+    </script>
+</body>
+</html>
