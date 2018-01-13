@@ -6,61 +6,26 @@
     <script src="js/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <script>
-
-        //Вариант 1
         $(document).ready(function () {
             $('.tab').on('click', function() {
                 $('.tab').removeClass('activeTab');
                 $(this).addClass('activeTab');
-                $('.block').removeClass('activeBlock');
-                $('.block').eq($(this).index()).addClass('activeBlock');
+                $('.block').removeClass('activeBlock').eq($(this).index()).addClass('activeBlock');
             });
         })
-
-        /*
-        //Вариант 2
-        $(document).ready(function () {
-            $('#tab1').on('click', function() {
-                $('#tab1').addClass('activeTab');
-                $('#tab2').removeClass('activeTab');
-                $('#tab3').removeClass('activeTab');
-                $('#block1').addClass('activeBlock');
-                $('#block2').removeClass('activeBlock');
-                $('#block3').removeClass('activeBlock');
-            });
-
-            $('#tab2').on('click', function() {
-                $('#tab2').addClass('activeTab');
-                $('#tab1').removeClass('activeTab');
-                $('#tab3').removeClass('activeTab');
-                $('#block2').addClass('activeBlock');
-                $('#block1').removeClass('activeBlock');
-                $('#block3').removeClass('activeBlock');
-            });
-
-            $('#tab3').on('click', function() {
-                $('#tab3').addClass('activeTab');
-                $('#tab2').removeClass('activeTab');
-                $('#tab1').removeClass('activeTab');
-                $('#block3').addClass('activeBlock');
-                $('#block2').removeClass('activeBlock');
-                $('#block1').removeClass('activeBlock');
-            });
-        })
-        */
     </script>
 </head>
 <body>
     <div class="container">
-        <div id="tab1" class="tab ">Первая вкладка</div>
-        <div id="tab2" class="tab activeTab">Вторая вкладка</div>
-        <div id="tab3" class="tab ">Третья вкладка</div>
-        <div id="block1" class="block ">
+        <div class="tab activeTab">Первая вкладка</div>
+        <div class="tab">Вторая вкладка</div>
+        <div class="tab">Третья вкладка</div>
+        <div class="block activeBlock">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi asperiores commodi consectetur enim
             exercitationem, minima voluptatem voluptates! Blanditiis doloremque ducimus eligendi, exercitationem
             fugiat necessitatibus optio pariatur placeat, porro quibusdam, veritatis.
         </div>
-        <div id="block2" class="block activeBlock">
+        <div class="block">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi asperiores commodi consectetur enim
             exercitationem, minima voluptatem voluptates! Blanditiis doloremque ducimus eligendi, exercitationem
             fugiat necessitatibus optio pariatur placeat, porro quibusdam, veritatis. Lorem ipsum dolor sit amet,
@@ -70,7 +35,7 @@
             voluptatem voluptates! Blanditiis doloremque ducimus eligendi, exercitationem fugiat necessitatibus
             optio pariatur placeat, porro quibusdam, veritatis.
         </div>
-        <div id="block3" class="block">
+        <div class="block">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi asperiores commodi consectetur enim
             exercitationem, minima voluptatem voluptates!
         </div>
