@@ -46,12 +46,12 @@ input[type="reset"]:hover {
     padding-top: 0;
 }
 .container{
-    margin: 20px 30px;
+    margin: 30px 30px;
 }
 .tab{
     display: inline-block;
     position: relative;
-    margin: 10px -2px -2px 0;
+    margin: 3px -2px -2px 0;
     padding: 12px 20px;
     border: 2px solid #0769ad;
     border-bottom: none;
@@ -75,7 +75,7 @@ input[type="reset"]:hover {
 .block{
     display: none;
     position: relative;
-    width: 600px;
+    max-width: 600px;
     padding: 15px;
     border: 2px solid #0769ad;
     background-color: #fff;
