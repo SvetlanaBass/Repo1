@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 3</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div class="contacts-form-wrapper">
+        <form name="contacts" action="" onsubmit="return validate()" onreset="return clearForm()">
+            <div>
+                <input type="text" name="username" size="50" id="userName"
+                       placeholder="Введите ваше имя" autofocus
+                       onfocus="return clearNameField()">
+            </div>
+            <div id="nameError" class="errorMessage"></div>
+            <div>
+                <input type="text" name="userphone" id="userPhone" size="50"
+                       placeholder="Введите номер телефона в формате +7(000)000-0000"
+                       onfocus="return clearPhoneField()">
+            </div>
+            <div id="phoneError" class="errorMessage"></div>
+            <div>
+                <input type="email" name="usermail" id="userMail" size="50"
+                       placeholder="Введите ваш электронный адрес"
+                       onfocus="return clearEmailField()">
+            </div>
+            <div id="emailError" class="errorMessage"></div>
+            <div class="city">
+                <label for="city">Город </label>
+                <select id="city" name="city"></select>
+            </div>
+            <div>
+                <label for="comment">Суть вашего письма</label>
+                <textarea id="comment" name="comment" cols="50" rows="5"
+                          onfocus="return clearCommentField()"></textarea>
+                <div id="commentError" class="errorMessage"></div>
+            </div>
+            <input type="submit" value="Отправить">
+            <input type="reset" value="Очистить">
+        </form>
+    </div>
+    <script>
+        function validate(){
+            let fname=document.forms["contacts"]["username"].value;
+            let fphone=document.forms["contacts"]["userphone"].value;
+            let femail=document.forms["contacts"]["usermail"].value;
+            let fcomment=document.forms["contacts"]["comment"].value;
+            let regExpPhone = /^\+\d+\(\d{3}\)\d{3}-\d{4}$/g;
+            let regExpEmail = /^\w+\.?-?\w+@\w+\.\w+$/g;
+
+            if (fname.length === 0){
+                document.getElementById("nameError").innerHTML="*Данное поле обязательно для заполнения";
+                document.getElementById("userName").style.borderColor = 'red';
+                return false;
+            } else if (fphone.length === 0){
+                document.getElementById("phoneError").innerHTML="*Данное поле обязательно для заполнения";
+                document.getElementById("userPhone").style.borderColor = 'red';
+                return false;
+            } else if (fphone.match(regExpPhone)){
+                if (femail.length === 0){
+                    document.getElementById("emailError").innerHTML="*Данное поле обязательно для заполнения";
+                    document.getElementById("userMail").style.borderColor = 'red';
+                    return false;
+                } else if (femail.match(regExpEmail)){
+                    if (fcomment.length === 0){
+                        document.getElementById("commentError").innerHTML="*Данное поле обязательно для заполнения";
+                        document.getElementById("comment").style.borderColor = 'red';
+                        return false;
+                    }
+                } else {
+                    document.getElementById("emailError").innerHTML="*Неправильно введен электронный адрес";
+                    document.getElementById("userMail").style.borderColor = 'red';
+                    return false;
+                }
+            } else {
+                document.getElementById("phoneError").innerHTML="*Неправильно введен номер телефона";
+                document.getElementById("userPhone").style.borderColor = 'red';
+                return false;
+            }
+        }
+
+        function clearForm() {
+            document.getElementById("userPhone").style.borderColor = '#4d6a79';
+            document.getElementById("userMail").style.borderColor = '#4d6a79';
+            document.getElementById("userName").style.borderColor = '#4d6a79';
+            document.getElementById("comment").style.borderColor = '#4d6a79';
+            document.getElementById("phoneError").innerHTML="";
+            document.getElementById("emailError").innerHTML="";
+            document.getElementById("nameError").innerHTML="";
+            document.getElementById("commentError").innerHTML="";
+
+        }
+
+        function clearNameField() {
+            document.getElementById("userName").style.borderColor = '#4d6a79';
+            document.getElementById("nameError").innerHTML="";
+        }
+
+        function clearPhoneField() {
+            document.getElementById("userPhone").style.borderColor = '#4d6a79';
+            document.getElementById("phoneError").innerHTML="";
+        }
+
+        function clearEmailField() {
+            document.getElementById("userMail").style.borderColor = '#4d6a79';
+            document.getElementById("emailError").innerHTML="";
+        }
+
+        function clearCommentField() {
+            document.getElementById("comment").style.borderColor = '#4d6a79';
+            document.getElementById("commentError").innerHTML="";
+        }
+
+        //AJAX
+        $.ajax({
+            type: 'GET',
+            url: 'json/cities.json',
+            // async: true,
+            success: function(data) {
+                let $options = "";
+                for (let prop in data){
+                    $('#city').html($options += '<option>' + data[prop] + '</option>');
+                }
+            },
+            dataType: 'json'
+        });
+
+    </script>
+</body>
+</html>
