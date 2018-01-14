@@ -29,7 +29,7 @@
             <div id="emailError" class="errorMessage"></div>
             <div class="city">
                 <input type="text" name="search" placeholder="Введите название города"
-                       id="searchCity" onkeyup="filterFunction()" onblur="clearDropdown()">
+                       id="searchCity" onkeyup="filterFunction()">
                 <div class="dropdown"></div>
             </div>
             <div>
@@ -114,10 +114,6 @@
             document.getElementById("commentError").innerHTML="";
         }
 
-        function clearDropdown() {
-            $('.dropdown').html("");
-        }
-
         //AJAX
         function filterFunction() {
             let filter, regExp;
@@ -132,7 +128,6 @@
                         if(data[prop].match(regExp)){
                             $('.dropdown').html(options += '<p class="' + data[prop] + '">' + data[prop] + '</p>');
                         }
-
                     }
                     $('.dropdown p').click(function() {
                         console.log($(this).attr('class'));
