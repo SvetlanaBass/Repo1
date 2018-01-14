@@ -98,3 +98,21 @@ input[type="reset"]:hover {
 .city{
     margin: 15px 0;
 }
+.dropdown{
+    width: 100%;
+    margin: -6px 10px 0 0;
+    padding: 0;
+    background-color: #fff;
+}
+.dropdown p{
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid #4d6a79;
+    border-right: 1px solid #4d6a79;
+    border-left: 1px solid #4d6a79;
+    cursor: pointer;
+}
+.dropdown p:hover{
+    background-color: #4d6a79;
+    color: white;
+}
