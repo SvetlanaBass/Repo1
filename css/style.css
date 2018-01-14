@@ -23,6 +23,13 @@ textarea {
     font-size: 14px;
     outline: none;
 }
+select {
+    padding: 8px;
+    border: 1px solid #4d6a79;
+    border-radius: 4px;
+    margin-left: 10px;
+    outline: none;
+}
 input[type="submit"],
 input[type="reset"] {
     width: 150px;
@@ -87,4 +94,7 @@ input[type="reset"]:hover {
 .activeBlock{
     display: block;
 
+}
+.city{
+    margin: 15px 0;
 }
