@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 1</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/Basket.js"></script>
+    <script>
+        $(document).ready(function () {
+            let basket = new Basket(0, 0, [], 'basket');
+
+            basket.render('#basket_wrapper');
+
+            $('.buyme').on('click', function () {
+                let idPruduct = parseInt($(this).attr('id').split('_')[1]);
+                let quantity = parseInt($(this).parent().find('.count').val()); // получаем количество из input
+                let price = parseInt($(this).parent().find('.product-price').text());
+
+                basket.add(idPruduct, quantity, price);
+            });
+
+            $('.delme').on('click', function () {
+                let idPruduct = parseInt($(this).attr('id').split('_')[1]);
+                let price = parseInt($(this).parent().find('.product-price').text());
+
+                basket.delete(idPruduct, price);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="basket_wrapper"></div>
+    <div class="good">
+        <p>Товар с ID 123</p>
+        <p>Цена: <span class="product-price">300</span> руб.</p>
+        <label for="good_123_count">Количество</label>
+        <input type="number" value="1" min="1" max="10" id="good_123_count" class="count">
+        <button class="buyme" id="good_123">Добавить в корзину</button>
+        <button class="delme" id="delete_123">Удалить из корзины</button>
+    </div>
+    <div class="good">
+        <p>Товар с ID 234</p>
+        <p>Цена: <span class="product-price">200</span> руб.</p>
+        <label for="good_234_count">Количество</label>
+        <input type="number" value="1" min="1" max="10" id="good_234_count" class="count">
+        <button class="buyme" id="good_234">Добавить в корзину</button>
+        <button class="delme" id="delete_234">Удалить из корзины</button>
+    </div>
+</body>
+</html>
