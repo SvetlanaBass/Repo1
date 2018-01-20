@@ -29,7 +29,6 @@ class Basket
         };
 
         this.countGoods += +quantity;
-        console.log(this.countGoods);
         this.amount += +price * +quantity;
 
         this.basketItems.push(basketItems);
@@ -57,8 +56,6 @@ class Basket
                 let basketData = $('<div />', {
                     id: 'basket_data'
                 });
-
-                
 
                 this.countGoods = data.basket.length;
                 this.amount = data.amount;
