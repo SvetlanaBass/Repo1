@@ -26,12 +26,12 @@ class Basket
         this.amount += +price * +quantity;
 
         let $basketTable = $('#basket_table');
-        let $TableTr = $('<tr />', {});
-        $TableTr.append('<td class="id_product">' + product + '</td>');
-        $TableTr.append('<td class="qty">' + quantity + '</td>');
-        $TableTr.append('<td class="price">' + price + ' руб.</td>');
-        $TableTr.append('<td><button class="delme">Удалить из корзины</button></td>');
-        $TableTr.appendTo($basketTable);
+        let $tableTr = $('<tr />', {});
+        $tableTr.append('<td class="id_product">' + product + '</td>');
+        $tableTr.append('<td class="qty">' + quantity + '</td>');
+        $tableTr.append('<td class="price">' + price + ' руб.</td>');
+        $tableTr.append('<td><button class="delme">Удалить из корзины</button></td>');
+        $tableTr.appendTo($basketTable);
 
         this.refresh();
     }
@@ -68,25 +68,25 @@ class Basket
                     id: 'basket_table'
                 });
 
-                let TableTr = $('<tr />', {
+                let tableTr = $('<tr />', {
                     id: 'basket_tr'
                 });
 
-                TableTr.append('<th>ID</th>');
-                TableTr.append('<th>Quantity</th>');
-                TableTr.append('<th>Price</th>');
-                TableTr.append('<th>Action</th>');
+                tableTr.append('<th>ID</th>');
+                tableTr.append('<th>Quantity</th>');
+                tableTr.append('<th>Price</th>');
+                tableTr.append('<th>Action</th>');
 
-                TableTr.appendTo(basketTable);
+                tableTr.appendTo(basketTable);
                 basketTable.appendTo(appendId);
 
                 for (let index in data.basket) {
-                    let TableTr = $('<tr />', {});
-                    TableTr.append('<td class="id_product">' + data.basket[index].id_product + '</td>');
-                    TableTr.append('<td class="qty">' + data.basket[index].quantity + '</td>');
-                    TableTr.append('<td class="price">' + data.basket[index].price + ' руб.</td>');
-                    TableTr.append('<td><button class="delme">Удалить из корзины</button></td>');
-                    TableTr.appendTo(basketTable);
+                    let tableTr = $('<tr />', {});
+                    tableTr.append('<td class="id_product">' + data.basket[index].id_product + '</td>');
+                    tableTr.append('<td class="qty">' + data.basket[index].quantity + '</td>');
+                    tableTr.append('<td class="price">' + data.basket[index].price + ' руб.</td>');
+                    tableTr.append('<td><button class="delme">Удалить из корзины</button></td>');
+                    tableTr.appendTo(basketTable);
                 }
             },
             context: this

@@ -125,3 +125,16 @@ table tr td {
     border: 1px solid #4d6a79;
     text-align: center;
 }
+.comment-wrapper {
+    margin-top: 30px;
+}
+.comment {
+    background-color: #fff;
+    border: 1px solid #4d6a79;
+    margin: 5px 0;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+.comment-wrapper input {
+    margin-top: 20px;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 2</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/Basket.js"></script>
+    <script src="js/Comment.js"></script>
+</head>
+<body>
+    <div id="basket_wrapper"></div>
+    <div class="good">
+        <h4>Товар с ID 123</h4>
+        <p>Цена: <span class="product-price">300</span> руб.</p>
+        <label for="good_123_count">Количество</label>
+        <input type="number" value="1" min="1" max="10" id="good_123_count" class="count">
+        <button class="buyme" id="good_123">Добавить в корзину</button>
+    </div>
+    <div class="good">
+        <h4>Товар с ID 234</h4>
+        <p>Цена: <span class="product-price">200</span> руб.</p>
+        <label for="good_234_count">Количество</label>
+        <input type="number" value="1" min="1" max="10" id="good_234_count" class="count">
+        <button class="buyme" id="good_234">Добавить в корзину</button>
+    </div>
+    <div class="comment-wrapper">
+        <h2>Комментарии</h2>
+        <button id="allComments">Показать все отзывы</button><br>
+        <label><input type="text" id="commentText"></label>
+        <button id="addComment">Добавить отзыв</button>
+        <div id="commentsCount"></div>
+        <div id="comments"></div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            let basket = new Basket(0, 0, 'basket');
+            let comment = new Comment(0, []);
+
+            basket.render('#basket_wrapper');
+
+            $('.buyme').on('click', function () {
+                let idProduct = parseInt($(this).attr('id').split('_')[1]);
+                let quantity = parseInt($(this).parent().find('.count').val()); // получаем количество из input
+                let price = parseInt($(this).parent().find('.product-price').text());
+
+                basket.add(idProduct, quantity, price);
+            });
+
+            $(document).on( "click", ".delme", function() {
+                let idProduct = parseInt($(this).parents('tr').find('.id_product').text());
+                let quantity = parseInt($(this).parents('tr').find('.qty').text());
+                let price = parseInt($(this).parents('tr').find('.price').text());
+                $(this).parents('tr').remove();
+
+                basket.delete(idProduct, quantity, price);
+            });
+
+            $('#allComments').on('click', function () {
+                comment.showCommentsItems();
+            });
+
+            $('#addComment').on('click', function () {
+                let text = $('#commentText').val();
+                comment.addComment("anonymous", text);
+            });
+
+            $(document).on('click', ".del", function (event) {
+                let countComment = parseInt($(document).find('#countOut').text().split(': ')[1]);
+                let children = $(document).find('#comments').children();
+
+                for(let i = 0; i < countComment; i++) {
+                    if(children[i].isSameNode(event.target.parentNode.parentNode)) {
+                        comment.deleteComment(i);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "result": 1,
+  "comments": [
+    {
+      "id_user": 18523,
+      "comment_nr": 3,
+      "text": "Отлично!"
+    },
+
+    {
+      "id_user": 12913,
+      "comment_nr": 2,
+      "text": "Хорошо."
+    },
+
+    {
+      "id_user": 65413,
+      "comment_nr": 1,
+      "text": "Нормально."
+    }
+
+  ]
+}
