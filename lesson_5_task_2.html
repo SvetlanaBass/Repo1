@@ -26,7 +26,8 @@
     </div>
     <div class="comment-wrapper">
         <h2>Комментарии</h2>
-        <label><input type="text" id="commentText"></label>
+        <h4 id="countOut">Всего комментариев: <span class="countOut"></span></h4>
+            <label><input type="text" id="commentText"></label>
         <button id="addComment">Добавить отзыв</button>
         <button class="showComments">Показать все отзывы</button>
         <div id="commentsCount"></div>
@@ -35,7 +36,7 @@
     <script>
         $(document).ready(function () {
             let basket = new Basket(0, 0, 'basket');
-            let comment = new Comment(0, []);
+            let comment = new Comment([]);
 
             basket.render('#basket_wrapper');
 

@@ -1,7 +1,6 @@
 class Comment
 {
-    constructor(countComments, arrComments){
-        this.countComments = countComments;
+    constructor(arrComments){
         this.arrComments = arrComments;
     }
 
@@ -14,19 +13,10 @@ class Comment
     }
 
     showCommentsItems(){
-        let commentsCount = $('#commentsCount');
-        let commentsData = $('<div id="countCom" />', {});
-
-
         $.get({
             url: './json/comments.json',
             dataType: 'json',
             success: function (data) {
-
-                this.countComments = data.comments.length;
-
-                commentsData.append('<h4 id="countOut">Всего комментариев: ' + this.countComments + '</h4>');
-                commentsData.appendTo(commentsCount);
 
                 for (let index in data.comments) {
                     let commentDiv = $('<div class="comment" />', {});
@@ -36,6 +26,7 @@ class Comment
                         '<button class="del">Удалить отзыв</button></p>');
                     this.arrComments.unshift(commentDiv);
                  }
+                this.refreshCountComments();
                 this.renderComments();
             },
             context: this
@@ -49,16 +40,15 @@ class Comment
         commentDiv.append('<p><button class="like">Одобрить отзыв</button>' +
             '<button class="del">Удалить отзыв</button></p>');
         this.arrComments.unshift(commentDiv);
-        this.renderComments();
         this.refreshCountComments();
+        this.renderComments();
+
     }
 
     refreshCountComments(){
-        let commentsCount = $('#commentsCount');
-        let commentsData = $('#countCom');
+        let commentsData= $('.countOut');
         commentsData.empty();
-        commentsData.append('<h4 id="countOut">Всего комментариев: ' + this.arrComments.length + '</h4>');
-        commentsData.appendTo(commentsCount);
+        commentsData.append(this.arrComments.length);
     }
 
     deleteComment(i){
