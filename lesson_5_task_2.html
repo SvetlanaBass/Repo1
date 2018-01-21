@@ -26,9 +26,9 @@
     </div>
     <div class="comment-wrapper">
         <h2>Комментарии</h2>
-        <button id="allComments">Показать все отзывы</button><br>
         <label><input type="text" id="commentText"></label>
         <button id="addComment">Добавить отзыв</button>
+        <button class="showComments">Показать все отзывы</button>
         <div id="commentsCount"></div>
         <div id="comments"></div>
     </div>
@@ -56,8 +56,9 @@
                 basket.delete(idProduct, quantity, price);
             });
 
-            $('#allComments').on('click', function () {
+            $('.showComments').on('click', function () {
                 comment.showCommentsItems();
+                $(this).hide();
             });
 
             $('#addComment').on('click', function () {

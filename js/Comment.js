@@ -17,6 +17,7 @@ class Comment
         let commentsCount = $('#commentsCount');
         let commentsData = $('<div id="countCom" />', {});
 
+
         $.get({
             url: './json/comments.json',
             dataType: 'json',
