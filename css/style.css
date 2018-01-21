@@ -116,3 +116,12 @@ input[type="reset"]:hover {
     background-color: #4d6a79;
     color: white;
 }
+table {
+    border-collapse: collapse;
+}
+table tr th,
+table tr td {
+    padding: 10px;
+    border: 1px solid #4d6a79;
+    text-align: center;
+}

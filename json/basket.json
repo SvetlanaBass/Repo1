@@ -3,12 +3,14 @@
   "basket": [
     {
       "id_product": 123,
-      "price": 300
+      "price": 300,
+      "quantity": 1
     },
 
     {
       "id_product": 234,
-      "price": 200
+      "price": 200,
+      "quantity": 1
     }
 
   ],

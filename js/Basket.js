@@ -1,9 +1,8 @@
 class Basket
 {
-    constructor(countGoods, amount, basketItems, id){
+    constructor(countGoods, amount, id){
         this.countGoods = countGoods;
         this.amount = amount;
-        this.basketItems = basketItems;
         this.id = id;
     }
 
@@ -23,15 +22,17 @@ class Basket
     }
 
     add(product, quantity, price){
-        let basketItems = {
-            "id_product": product,
-            "price": price
-        };
-
         this.countGoods += +quantity;
         this.amount += +price * +quantity;
 
-        this.basketItems.push(basketItems);
+        let $basketTable = $('#basket_table');
+        let $TableTr = $('<tr />', {});
+        $TableTr.append('<td class="id_product">' + product + '</td>');
+        $TableTr.append('<td class="qty">' + quantity + '</td>');
+        $TableTr.append('<td class="price">' + price + ' руб.</td>');
+        $TableTr.append('<td><button class="delme">Удалить из корзины</button></td>');
+        $TableTr.appendTo($basketTable);
+
         this.refresh();
     }
 
@@ -40,8 +41,6 @@ class Basket
         $basketDataDiv.empty();
         $basketDataDiv.append('<p>Всего товаров: ' + this.countGoods + '</p>');
         $basketDataDiv.append('<p>Сумма: ' + this.amount + '</p>');
-        $basketDataDiv.append('<table>')
-
     }
 
     collectBasketItems(){
@@ -65,24 +64,39 @@ class Basket
 
                 basketData.appendTo(appendId);
 
+                let basketTable = $('<table />', {
+                    id: 'basket_table'
+                });
+
+                let TableTr = $('<tr />', {
+                    id: 'basket_tr'
+                });
+
+                TableTr.append('<th>ID</th>');
+                TableTr.append('<th>Quantity</th>');
+                TableTr.append('<th>Price</th>');
+                TableTr.append('<th>Action</th>');
+
+                TableTr.appendTo(basketTable);
+                basketTable.appendTo(appendId);
+
                 for (let index in data.basket) {
-                    this.basketItems.push(data.basket[index]);
+                    let TableTr = $('<tr />', {});
+                    TableTr.append('<td class="id_product">' + data.basket[index].id_product + '</td>');
+                    TableTr.append('<td class="qty">' + data.basket[index].quantity + '</td>');
+                    TableTr.append('<td class="price">' + data.basket[index].price + ' руб.</td>');
+                    TableTr.append('<td><button class="delme">Удалить из корзины</button></td>');
+                    TableTr.appendTo(basketTable);
                 }
             },
             context: this
         });
     }
 
-    delete(product, price){
-        let basketItems = {
-            "id_product": product,
-            "price": price
-        };
+    delete(product, quantity, price){
+        this.countGoods -= +quantity;
+        this.amount -= +price * +quantity;
 
-        this.countGoods -= 1;
-        this.amount -= +price;
-
-        this.basketItems.pop(basketItems);
         this.refresh();
     }
 }
